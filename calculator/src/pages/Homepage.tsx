@@ -107,7 +107,10 @@ const Homepage: React.FC = () => {
       <div>
         {products.map((product) => (
           <div key={product.productId}>
-            <Link to={`/product/${product.productId}`}>
+            <Link to={{
+                pathname: '/product',
+                search: `?productName=${product.productName}&company=${product.company}&category=${product.category}&price=${product.price}&rating=${product.rating}&discount=${product.discount}&availability=${product.availability ? 'Available' : 'Out of stock'}`
+              }}>
               <h2>{product.productName}</h2>
               <p>Company: {product.company}</p>
               <p>Category: {product.category}</p>
