@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios, { AxiosResponse } from 'axios';
+import { Link } from 'react-router-dom';
 
 interface Product {
   productId: number;
@@ -106,13 +107,15 @@ const Homepage: React.FC = () => {
       <div>
         {products.map((product) => (
           <div key={product.productId}>
-            <h2>{product.productName}</h2>
-            <p>Company: {product.company}</p>
-            <p>Category: {product.category}</p>
-            <p>Price: {product.price}</p>
-            <p>Rating: {product.rating}</p>
-            <p>Discount: {product.discount}</p>
-            <p>Availability: {product.availability ? 'Available' : 'Out of stock'}</p>
+            <Link to={`/product/${product.productId}`}>
+              <h2>{product.productName}</h2>
+              <p>Company: {product.company}</p>
+              <p>Category: {product.category}</p>
+              <p>Price: {product.price}</p>
+              <p>Rating: {product.rating}</p>
+              <p>Discount: {product.discount}</p>
+              <p>Availability: {product.availability ? 'Available' : 'Out of stock'}</p>
+            </Link>
           </div>
         ))}
       </div>
